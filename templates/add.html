@@ -1,17 +1,18 @@
-{% extends 'layout.html' %} {% block content %}
+{% extends 'layout.html' %}
+{% block content %}
 
-
-
-{% if is_done %} <!--DO THIS--> {% else %}
+{% if is_done %}
+<h2>Thank you for signing up!</h2>
+{% else %}
 <form action="/add.html" method="POST" class="box">
     <div>
         <label class="form-label">Email address</label>
         <input name="email" type="email" class="form-control" id="email"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" placeholder="name@example.com" />
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="name@example.com" />
     </div>
     <div>
-        <label class="form-control">Name</label>
-        <textarea class="form-control" name="text" id="name" rows="1"></textarea>
+        <label class="form-label">Name</label>
+        <input class="form-control" name="name" id="name" rows="1"></input>
     </div>
     <br />
     <div>
@@ -19,6 +20,5 @@
     </div>
 </form>
 {% endif %}
-
 
 {% endblock %}

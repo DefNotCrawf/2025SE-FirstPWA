@@ -17,10 +17,13 @@ def index():
 @app.route("/add.html", methods=["POST", "GET"])
 def add():
     if request.method == "POST":
-        email = request.form["email"]
-        name = request.form["name"]
-        dbHandler.insertContact(email, name)
-        return render_template("/add.html", is_done="True")
+        email = request.form.get("email")
+        name = request.form.get("name")
+        if email and name:
+            dbHandler.insertContact(email, name)
+            return render_template("/add.html", is_done=True)
+        else:
+            return render_template("/add.html", error="Missing email or name")
     else:
         return render_template("/add.html")
 
